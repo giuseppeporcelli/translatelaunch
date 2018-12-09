@@ -1,0 +1,86 @@
+<div data-spinner="isBusy" data-fade="true">
+    <div class="container">
+        <div style="padding:5px; margin-top:10px; background-color:#efefef">
+            <a data-ng-href="#/shop">Back To Products</a>
+        </div>
+        <div class="card">
+            <div class="container-fluid">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+                        <div class="preview-pic">
+                            <div><img data-ng-src="{{ product.picture }}" alt="{{ product.name }}" /></div>
+                        </div>
+                    </div>
+                    <div class="details col-md-6">
+                        <h3 class="product-title">{{ product.name }}</h3>
+                        <div class="rating">
+                            <span class="review-no">{{ product.category }}</span>
+                        </div>
+                        <p class="product-description">{{ product.description }}</p>
+                        <h4 class="price">Current Price: <span>${{ product.price }}</span></h4>
+                        <div class="action">
+                            <button class="add-to-cart btn btn-default" type="button">Add To Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px; margin-bottom:120px;">
+            <div class="row" style="margin: 10px;">
+                <div class="product-title">Reviews</div>
+                <div data-ng-repeat="review in reviews">
+                    <div style="background-color: #efefef; padding: 10px; margin-top: 5px;">
+                        <div>
+                            <span>{{ review.date }}</span>
+                            <span style="font-weight:bold">{{ review.author }}</span><span> wrote:</span>
+                        </div>
+                        <div>
+                            <div>
+                                <span>{{ review.review }}</span>
+                                <span style="float:right"><img data-ng-if="review.sentimentSupported" style="width:25px; height:25px;" data-ng-src="{{ review.sentimentIcon }}" alt="Sentiment" /></span>
+                            </div>
+                            <div data-ng-if="review.translationSupported" class="btn-group" uib-dropdown dropdown-append-to-body is-open="status.isopen">
+                                <button style="padding:0" style="font-size:10pt;" id="single-button" type="button" class="btn btn-link" uib-dropdown-toggle>
+                                    Translate
+                                </button>
+                                <ul class="dropdown-menu" data-ng-if="review.languageKey === 'en'" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'ar');">Arabic</a></li>
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'zh');">Chinese (Simplified)</a></li>
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'zh-TW');">Chinese (Traditional)</a></li>
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'cs');">Czech</a></li>
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'fr');">French</a></li>
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'de');">German</a></li>
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'it');">Italian</a></li>
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'ja');">Japanese</a></li>
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'pt');">Portuguese</a></li>
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'ru');">Russian</a></li>
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'es');">Spanish</a></li>
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'tr');">Turkish</a></li>
+                                </ul>
+                                <ul class="dropdown-menu" data-ng-if="review.languageKey === 'ar' || review.languageKey === 'zh' || review.languageKey === 'zh-TW' || review.languageKey === 'cs' || review.languageKey === 'fr' || review.languageKey === 'de' || review.languageKey === 'it' || review.languageKey === 'ja' || review.languageKey === 'pt' || review.languageKey === 'ru' || review.languageKey === 'es' || review.languageKey === 'tr'" 
+                                    uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                    <li role="menuitem"><a href="" ng-click="translate(review, 'en');">English</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div data-ng-if="review.translatedReview" style="background-color:white; padding:10px;">
+                            {{ review.translatedReview }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-ng-if="!userInfo.isLoggedIn" style="margin-top: 10px; margin-left: 8px; font-weight: bold">Please login to add or update your review</div>
+
+                <div style="margin-top: 10px;">
+                    <div data-ng-if="userInfo.isLoggedIn">
+                        <div><textarea class="form-control" style="resize:none;" rows="5" data-ng-model="$parent.review"></textarea></div>
+                        <div style="margin-top: 5px;">
+                            <button class="btn btn-primary" data-ng-disabled="!review" type="button" data-ng-click="addReview();">Submit Review</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="shineCommerce" class="no-js">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The Vintage Vehicles</title>
+  <meta name="description" content="The Vintage Vehicles e-commerce">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" 
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+
+<body>
+  
+  <nav data-ng-controller="topNavController" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header" style="width: 100%">
+        <a class="navbar-brand bf-navbar-brand" href="#">
+          <img src="images/aws_logo_white.png" style="height:35px;" alt="AWS logo" />
+        </a>
+        <div data-ng-if="!isLoggedIn" class="dropdown navbar-text" style="float:right; margin-top:8px; margin-bottom:0px; margin-right:0px;">
+            <button class="btn btn-primary" type="button" data-ng-click="login();">Login</button>
+        </div>
+        <div data-ng-if="isLoggedIn" class="dropdown navbar-text" style="float:right; margin-top:8px; margin-bottom:0px; margin-right:0px;">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ emailAddress }}
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a ng-href="" ng-click="logout();">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div ng-view></div>
+
+  <footer data-ng-controller="bottomNavController" class="footer navbar-inverse navbar-fixed-bottom">
+    <div class="social" id="social-icons">
+      <span style="font-weight: bold; font-size: 14px;">connect with us</span>
+      <ul class="social-icons">
+          <li>
+              <a ng-href="" data-ng-click="sendEmail(1);" class="linkedin" target="_blank">
+                <i class="fa fa-envelope-o"></i>
+              </a>
+          </li>
+        <li>
+            <a href="https://www.linkedin.com/in/giuporcelli" class="linkedin" target="_blank">
+              <i class="fa fa-linkedin"></i>
+            </a>
+        </li>
+        <li>
+            <a data-ng-click="sendEmail(2);" ng-href="" class="linkedin" target="_blank">
+              <i class="fa fa-envelope-o"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/in/diego-natali-63182b35" class="linkedin" target="_blank">
+              <i class="fa fa-linkedin"></i>
+            </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-touch.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+  <script src="https://use.fontawesome.com/bef89fa04e.js"></script>
+  <script src="scripts/ui-bootstrap-tpls.min.js"></scripT>
+  <script src="scripts/aws-cognito-sdk.min.js"></script>
+  <script src="scripts/amazon-cognito-identity.min.js"></script>
+  <script src="scripts/spin.js"></script>
+  <script src="scripts/settings.js"></script>
+  <script src="app/common/common.js"></script>
+  <script src="app/common/spinnerDirective.js"></script>
+  <script src="app/common/oauth2service.js"></script>
+  <script src="app/shell/shell.js"></script>
+  <script src="app/shell/topNavController.js"></script>
+  <script src="app/shell/bottomNavController.js"></script>
+  <script src="app/shop/shop.js"></script>  
+  <script src="app/shop/shopController.js"></script>
+  <script src="app/shop/productController.js"></script>
+  <script src="app/app.js"></script>
+
+</body>
+
+</html>

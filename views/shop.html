@@ -1,0 +1,23 @@
+<div data-spinner="isBusy" data-fade="true">
+    <div style="text-align:center"><h1>THE VINTAGE VEHICLES</h1></div>
+    <div style="padding-top:5px; padding-bottom:5px; padding-left:30px; padding-right:30px;">
+        <ul class="cards">
+            <li class="cards__item" data-ng-repeat="product in products">
+                <div class="card">
+                    <a data-ng-href="{{ '#/product/' + product.productId }}">
+                        <div class="card__image" ng-style="{'background-image':'url({{ product.picture }})'}">
+                        </div>
+                        <div class="card__content">
+                        <div class="card__title">{{ product.name }}</div>
+                            <p class="card__text"></p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+
+        <div data-ng-if="!isBusy" style="text-align:center; padding: 20px;">
+            <input style="width: 150px;" type="button" data-ng-click="loadMore()" class="btn btn-primary" value="Load More" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>The Vintage Vehicles</title>
+        <meta name="description" content="The Vintage Vehicles e-commerce">
+        <link rel="stylesheet" href="styles/style.css" />
+    </head>
+    <body>
+        <script type="text/javascript" src="scripts/settings.js"></script>
+        <script type="text/javascript">
+            window.sessionStorage.removeItem('access_token');
+            window.sessionStorage.removeItem('refresh_token');
+            window.sessionStorage.removeItem('expires_on');
+
+            var currentPath = window.sessionStorage.getItem('current_path');
+            var returnToUrl = RETURN_TO_URL;
+            if (currentPath){
+                returnToUrl += currentPath;
+            }
+            window.location.replace(returnToUrl);
+        </script>
+    </body>
+</html>
